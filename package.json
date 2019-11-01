@@ -4,7 +4,7 @@
   "description": "얼리슬로스, 점심 먹자!",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env mocha -- ./index.test.js"
+    "test": "cross-env mocha -- ./**.test.js"
   },
   "author": "Peter Kim",
   "license": "ISC",
