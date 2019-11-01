@@ -14,8 +14,8 @@ EatLunch = (Member, Group, Menu) => {
     let result = [];
     let coppiedMenu = [...Menu]
     if(Member.length < Group) {
-        console.log('그룹수가 너무 많아요! 식사는 혼밥 말고 같이!')
-        return true;
+        //그룹수와 팀원수를 일치시킨다
+        //혼밥하기로 한다
     } else {
         let Team = [...Member];
         for(let i = 0; i < Group; i++) {
@@ -37,3 +37,4 @@ EatLunch = (Member, Group, Menu) => {
         return result;
     }
 }
+console.log(EatLunch(['A','B','C','D','E','F','G'], 2, ['1','2','3','4','5','6','7','8','9','10']))

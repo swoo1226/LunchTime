@@ -25,6 +25,7 @@ describe('EatLunch', function(){
           }
           return true;
         }
+        
         var lunchSet = EatLunch(Member,1,Menu)
         isNotDuplicatedMenu(lunchSet).should.be.equal(true)
         lunchSet = EatLunch(Member,2,Menu)
@@ -45,5 +46,44 @@ describe('EatLunch', function(){
         isNotDuplicatedMenu(lunchSet).should.be.equal(true)
         lunchSet = EatLunch(Member,10,Menu)
         isNotDuplicatedMenu(lunchSet).should.be.equal(true)
+    }),
+    it('각 식사조에 겹치는 인원은 없어야 합니다', function(){
+      let isNotDuplicatedMember = function(lunchParty) {
+        let team = {};
+        for(let i = 0; i < lunchParty.length; i++) {
+          let group = lunchParty[i][(i+1).toString()];
+          for(let j = 0; j < lunchParty[i][(i+1).toString()].length; j++){
+            if(team[group[j]] === undefined) {
+              team[group[j]]  = true;
+            } else {
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+      var lunchSet = EatLunch(Member,1,Menu)
+        isNotDuplicatedMember(lunchSet).should.be.equal(true)
+        lunchSet = EatLunch(Member,2,Menu)
+        isNotDuplicatedMember(lunchSet).should.be.equal(true)  
+        lunchSet = EatLunch(Member,3,Menu)
+        isNotDuplicatedMember(lunchSet).should.be.equal(true)
+        lunchSet = EatLunch(Member,4,Menu)
+        isNotDuplicatedMember(lunchSet).should.be.equal(true)
+        lunchSet = EatLunch(Member,5,Menu)
+        isNotDuplicatedMember(lunchSet).should.be.equal(true)
+        lunchSet = EatLunch(Member,6,Menu)
+        isNotDuplicatedMember(lunchSet).should.be.equal(true)
+        lunchSet = EatLunch(Member,7,Menu)
+        isNotDuplicatedMember(lunchSet).should.be.equal(true)
+        lunchSet = EatLunch(Member,8,Menu)
+        isNotDuplicatedMember(lunchSet).should.be.equal(true)
+        lunchSet = EatLunch(Member,9,Menu)
+        isNotDuplicatedMember(lunchSet).should.be.equal(true)
+        lunchSet = EatLunch(Member,10,Menu)
+        isNotDuplicatedMember(lunchSet).should.be.equal(true)
+    }),
+    it('나누고자 하는 그룹수가 총 인원 보다 많으면, 각자 혼밥을 한다', function(){
+      
     })
 })
