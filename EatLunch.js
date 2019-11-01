@@ -16,25 +16,25 @@ EatLunch = (Member, Group, Menu) => {
     if(Member.length < Group) {
         //그룹수와 팀원수를 일치시킨다
         //혼밥하기로 한다
-    } else {
-        let Team = [...Member];
-        for(let i = 0; i < Group; i++) {
-            result[i] = {};
-            result[i][i+1] = []; // 팀원 추가될 곳
-            let randomPickMenu = Math.floor(Math.random() * coppiedMenu.length);
-            result[i]['추천 메뉴'] = coppiedMenu[randomPickMenu];  // 그룹별 추천메뉴 입력
-            coppiedMenu.splice(randomPickMenu, 1)
-        }
-        while(Team.length > 0) {
-            for(let j = 0; j < result.length; j++) {
-                let randomPickTeam = Math.floor(Math.random() * Team.length);
-                if(Team[randomPickTeam] !== undefined) {
-                    result[j][j+1].push(Team[randomPickTeam])   // 그룹별 팀원 분배
-                }
-                Team.splice(randomPickTeam, 1);
-            }
-        }
-        return result;
+        Group = Member.length;
+    } 
+    let Team = [...Member];
+    for(let i = 0; i < Group; i++) {
+        result[i] = {};
+        result[i][i+1] = []; // 팀원 추가될 곳
+        let randomPickMenu = Math.floor(Math.random() * coppiedMenu.length);
+        result[i]['추천 메뉴'] = coppiedMenu[randomPickMenu];  // 그룹별 추천메뉴 입력
+        coppiedMenu.splice(randomPickMenu, 1)
     }
-}
-console.log(EatLunch(['A','B','C','D','E','F','G'], 2, ['1','2','3','4','5','6','7','8','9','10']))
+    while(Team.length > 0) {
+        for(let j = 0; j < result.length; j++) {
+            let randomPickTeam = Math.floor(Math.random() * Team.length);
+            if(Team[randomPickTeam] !== undefined) {
+                result[j][j+1].push(Team[randomPickTeam])   // 그룹별 팀원 분배
+            }
+            Team.splice(randomPickTeam, 1);
+        }
+    }
+    return result;
+    }
+console.log(EatLunch(['A','B','C','D','E','F','G','H'], 10, ['1','2','3','4','5','6','7','8','9','10']))
