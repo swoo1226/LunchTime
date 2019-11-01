@@ -10,23 +10,25 @@ Return value
 
     return array의 길이는 Group 수와 같아야 한다.
 */
-EatLunch = (Member, Group) => {
+EatLunch = (Member, Group, Menu) => {
     let result = [];
     let Team = [...Member];
     for(let i = 0; i < Group; i++) {
         result[i] = {};
         result[i][i+1] = [];    //팀원 추가될 곳
-        result[i]['추천 메뉴'] = '';
+        let randomPickMenu = Math.floor(Math.random() * Menu.length);
+        result[i]['추천 메뉴'] = Menu[randomPickMenu];
+        Menu.splice(randomPickMenu, 1)
     }
     while(Team.length > 0) {
         for(let j = 0; j < result.length; j++) {
-            let randomPick = Math.floor(Math.random() * Team.length);
-            if(Team[randomPick] !== undefined) {
-                result[j][j+1].push(Team[randomPick])
+            let randomPickTeam = Math.floor(Math.random() * Team.length);
+            if(Team[randomPickTeam] !== undefined) {
+                result[j][j+1].push(Team[randomPickTeam])
             }
-            Team.splice(randomPick, 1);
+            Team.splice(randomPickTeam, 1);
         }
     }
     return result;
 }
-console.log('Members: ', EatLunch(['A','B','C','D','E','F','G'], 4))
+console.log('Members: ', EatLunch(['A','B','C','D','E','F','G'], 4, ['한식', '중식', '일식', '양식', '분식', '레스토랑', '배달']))
