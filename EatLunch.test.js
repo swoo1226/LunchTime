@@ -83,7 +83,18 @@ describe('EatLunch', function(){
         lunchSet = EatLunch(Member,10,Menu)
         isNotDuplicatedMember(lunchSet).should.be.equal(true)
     }),
+    it('결과적으로 나눠진 그룹은 처음에 주어진 그룹수와 같아야 한다', function(){
+      EatLunch(Member, 1,Menu).length.should.be.equal(1)
+      EatLunch(Member, 2,Menu).length.should.be.equal(2)
+      EatLunch(Member, 3,Menu).length.should.be.equal(3)
+      EatLunch(Member, 4,Menu).length.should.be.equal(4)
+      EatLunch(Member, 5,Menu).length.should.be.equal(5)
+      EatLunch(Member, 6,Menu).length.should.be.equal(6)
+      EatLunch(Member, 7,Menu).length.should.be.equal(7)
+    })
     it('나누고자 하는 그룹수가 총 인원 보다 많으면, 각자 혼밥을 한다', function(){
-      
+      EatLunch(Member, 8,Menu).length.should.be.equal(Member.length)
+      EatLunch(Member, 9,Menu).length.should.be.equal(Member.length)
+      EatLunch(Member, 10,Menu).length.should.be.equal(Member.length)
     })
 })
