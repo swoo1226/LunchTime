@@ -1,0 +1,16 @@
+{
+  "name": "eatlunch",
+  "version": "1.0.0",
+  "description": "얼리슬로스, 점심 먹자!",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env mocha -- ./index.test.js"
+  },
+  "author": "Peter Kim",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^6.0.3",
+    "mocha": "^6.2.2",
+    "should": "^13.2.3"
+  }
+}
